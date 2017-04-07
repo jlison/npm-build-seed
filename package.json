@@ -1,0 +1,51 @@
+{
+  "name": "npm-build-seed",
+  "version": "0.0.2",
+  "description": "A basic npm build tool seed",
+  "main": "index.js",
+  "scripts": {
+    "dev": "watch \"npm run compile\" src -d -p=\"/(css|pack|scss|modules)/\"",
+    "compile" : "npm-run-all sass pug build test",
+    "build": "babel-node scripts/build.script.js",
+    "test": "jest",
+    "test:watch": "npm test -- --watch",
+    "sass": "node-sass src/scss/style.scss src/css/style.css",
+    "pug": "pug src/ --out .",
+    "pack": "webpack src/app.js src/pack/index.js",
+    "prepublish": "npm run build"
+  },
+  "babel": {
+    "presets": [
+      "latest"
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jlison/npm-build-seed.git"
+  },
+  "keywords": [
+    "npm",
+    "build",
+    "seed",
+    "transpiler",
+    "builder"
+  ],
+  "author": "Jorge Lison (https://jorgelison.com)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jlison/npm-build-seed/issues"
+  },
+  "homepage": "https://github.com/jlison/npm-build-seed#readme",
+  "devDependencies": {
+    "babel-cli": "^6.24.1",
+    "babel-preset-latest": "^6.24.1",
+    "jest": "^19.0.2",
+    "node-sass": "^4.5.2",
+    "npm-run-all": "^4.0.2",
+    "pug": "^2.0.0-beta11",
+    "pug-cli": "^1.0.0-alpha6",
+    "shelljs": "^0.7.7",
+    "watch": "^1.0.2",
+    "webpack": "^2.3.3"
+  }
+}
