@@ -1,9 +1,13 @@
 # npm-build-seed
 A basic npm build tool seed.
 
-Install the required development dependencies by typing:
+Install it with:
 ```
-npm install
+npm install npm-build-seed
+```
+or clone the repo with:
+```
+git clone git@github.com:jlison/npm-build-seed.git
 ```
 
 ## Commands ##
@@ -17,7 +21,8 @@ npm run sass
 npm run pug
 npm run pack
 ```
-### Pros of using NPM as a building tool over Gulp or Grunt ###
+
+### Pros of using NPM as a build tool over Gulp or Grunt ###
 * Gulp and Grunt rely on NPM. NPM does not rely on Gulp or Grunt.
 * NPM is here to stay. Where is Gulp 4? What happened to Grunt?
 * NPM has easy to use "pre and post hooks".
@@ -27,7 +32,7 @@ npm run pack
 * It is easy to write and use asynchronous code to run tasks with NPM scripts.
 * It is easy to use pipes and stream to other tasks using NPM
 
-### Cons of using NPM scripts ###
+### Cons of using NPM scripts as a build tool ###
 * The need to make the scripts "cross operating system" compatible.
 
 Inspired by the following EggHead Tutorials:

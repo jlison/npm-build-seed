@@ -1,16 +1,25 @@
-import { exec, cp } from "shelljs";
+import { exec } from "shelljs";
+import { parallel } from "async";
 
-// Pack all files using webpack
-exec("npm run pack");
+parallel({
+    babel: (callback) => {
+      exec("npm run babel");
+      callback(null, 'babel');
+    },
+    sass: (callback) => {
+      exec("npm run sass");
+      callback(null, 'sass');
+    },
+    pug: (callback) =>{
+      exec("npm run pug");
+      callback(null, 'pug');
+    }
+}, (err, results) => {
 
-// Transpile ES2016 javascript files
-exec("babel src/pack/index.js --out-dir .");
+  if(err){
+    console.error("Build error: %j", err);
+  }
 
-// Copy transpiled app entry file
-cp('-R', './src/pack/index.js', '.');
-
-// Copy source css library files
-cp('-R', './src/css/', '.');
-
-// Transpile pug files to html
-exec("pug src --out .");
+  exec("npm run webpack");
+  exec("npm run test");
+});
