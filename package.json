@@ -1,6 +1,6 @@
 {
   "name": "npm-build-seed",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "A basic npm build tool seed",
   "main": "dist/index.js",
   "scripts": {
