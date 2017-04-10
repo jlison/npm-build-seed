@@ -13,6 +13,14 @@ parallel({
     pug: (callback) =>{
       exec("npm run pug");
       callback(null, 'pug');
+    },
+    imgs: (callback) =>{
+      exec("npm run imgs", {async:true});
+      callback(null, 'imgs');
+    },
+    fonts: (callback) =>{
+      exec("npm run fonts", {async:true});
+      callback(null, 'fonts');
     }
 }, (err, results) => {
 

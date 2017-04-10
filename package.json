@@ -6,10 +6,13 @@
   "scripts": {
     "babel": "babel-node scripts/babel.script.js",
     "build": "babel-node scripts/build.script.js",
-    "test": "jest",
-    "test:watch": "npm test -- --watch",
-    "sass": "babel-node scripts/sass.script.js",
+    "dev": "babel-node scripts/dev.script.js",
+    "fonts": "babel-node scripts/fonts.script.js",
+    "imgs": "babel-node scripts/imgs.script.js",
     "pug": "babel-node scripts/pug.script.js",
+    "sass": "babel-node scripts/sass.script.js",
+    "test:watch": "npm test -- --watch",
+    "test": "jest",
     "webpack": "babel-node scripts/webpack.script.js"
   },
   "babel": {
@@ -40,6 +43,9 @@
     "async": "^2.3.0",
     "babel-cli": "^6.24.1",
     "babel-preset-latest": "^6.24.1",
+    "imagemin": "^5.2.2",
+    "imagemin-mozjpeg": "^6.0.0",
+    "imagemin-pngquant": "^5.0.0",
     "jest": "^19.0.2",
     "meow": "^3.7.0",
     "node-sass": "^4.5.2",
