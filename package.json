@@ -1,6 +1,6 @@
 {
   "name": "npm-build-seed",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "A basic npm build tool seed",
   "main": "dist/index.js",
   "scripts": {
@@ -13,7 +13,8 @@
     "sass": "babel-node scripts/sass.script.js",
     "test:watch": "npm test -- --watch",
     "test": "jest",
-    "webpack": "babel-node scripts/webpack.script.js"
+    "webpack": "babel-node scripts/webpack.script.js",
+    "pack": "webpack"
   },
   "babel": {
     "presets": [
@@ -42,7 +43,12 @@
   "devDependencies": {
     "async": "^2.3.0",
     "babel-cli": "^6.24.1",
+    "babel-core": "^6.24.1",
+    "babel-loader": "^7.0.0",
     "babel-preset-latest": "^6.24.1",
+    "css-loader": "^0.28.0",
+    "extract-text-webpack-plugin": "^2.1.0",
+    "html-loader": "^0.4.5",
     "imagemin": "^5.2.2",
     "imagemin-mozjpeg": "^6.0.0",
     "imagemin-pngquant": "^5.0.0",
@@ -50,10 +56,15 @@
     "meow": "^3.7.0",
     "node-sass": "^4.5.2",
     "npm-run-all": "^4.0.2",
-    "pug": "^2.0.0-beta11",
+    "pug": "^2.0.0-beta9",
     "pug-cli": "^1.0.0-alpha6",
+    "pug-html-loader": "^1.1.4",
+    "sass-loader": "^6.0.3",
     "shelljs": "^0.7.7",
+    "style-loader": "^0.16.1",
     "watch": "^1.0.2",
-    "webpack": "^2.3.3"
+    "webpack": "^2.4.1",
+    "webpack-dev-server": "^2.4.5",
+    "webpack-node-externals": "^1.5.4"
   }
 }

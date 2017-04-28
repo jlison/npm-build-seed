@@ -26,6 +26,7 @@ parallel({
 
   if(err){
     console.error("Build error: %j", err);
+    return false, process.exit(1);
   }
 
   exec("npm run webpack");
