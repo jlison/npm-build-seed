@@ -14,7 +14,10 @@
     "test:watch": "npm test -- --watch",
     "test": "jest",
     "webpack": "babel-node scripts/webpack.script.js",
-    "pack": "webpack"
+    "pack": "webpack",
+    "devserv": "node scripts/webpack.middleware.script.js",
+    "spack": "nodemon --watch webpack.config.js --exec \"webpack-dev-server --env development\"",
+    "sprod": " webpack-dev-server --env production"
   },
   "babel": {
     "presets": [
@@ -47,7 +50,9 @@
     "babel-loader": "^7.0.0",
     "babel-preset-latest": "^6.24.1",
     "css-loader": "^0.28.0",
+    "express": "^4.15.2",
     "extract-text-webpack-plugin": "^2.1.0",
+    "file-loader": "^0.11.1",
     "html-loader": "^0.4.5",
     "imagemin": "^5.2.2",
     "imagemin-mozjpeg": "^6.0.0",
@@ -62,9 +67,13 @@
     "sass-loader": "^6.0.3",
     "shelljs": "^0.7.7",
     "style-loader": "^0.16.1",
+    "url": "^0.11.0",
+    "url-loader": "^0.5.8",
     "watch": "^1.0.2",
     "webpack": "^2.4.1",
+    "webpack-dashboard": "^0.4.0",
     "webpack-dev-server": "^2.4.5",
+    "webpack-hot-middleware": "^2.18.0",
     "webpack-node-externals": "^1.5.4"
   }
 }

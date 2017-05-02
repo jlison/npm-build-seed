@@ -12,3 +12,5 @@
 'use strict';
 
 let Template = require('./modules/template').Template;
+
+console.log("Hiho237asd ");

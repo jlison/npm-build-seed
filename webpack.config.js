@@ -1,44 +1,42 @@
 const path = require('path');
 const webpack = require('webpack');
+const Dashboard = require('webpack-dashboard/plugin');
+const DashboardPlugin = require('webpack-dashboard/plugin');
+
 const nodeExternals = require('webpack-node-externals');
-const ExtractTextPlugin = require("extract-text-webpack-plugin");
-const extractSass = new ExtractTextPlugin({
-    filename: "[name].[contenthash].css",
-    disable: process.env.NODE_ENV === "development"
-});
+// const ExtractTextPlugin = require("extract-text-webpack-plugin");
+// const extractSass = new ExtractTextPlugin({
+//     filename: "[name].[contenthash].css",
+// });
 
 module.exports = {
   context: path.resolve(__dirname, './src'),
   entry: {
     index: './index.js',
-    sass: './scss/style.scss',
-    devServerHot: 'webpack/hot/dev-server',
-    devServerClient: 'webpack-dev-server/client?http://localhost:3000/'
+    // devServerHot: 'webpack/hot/dev-server',
+    // devServerClient: 'webpack-dev-server/client?http://localhost:3000/'
   },
   output: {
     path: path.resolve(__dirname, './dist'),
     filename: '[name].bundle.js',
   },
   devServer: {
-    contentBase: path.resolve(__dirname, './dist'),
     compress: true,
+    contentBase: path.resolve(__dirname, './dist'),
     port: 3000,
-    //hot: true,
     overlay: {
       warnings: true,
       errors: true
     }
   },
-  target: 'node',
-  externals: [nodeExternals()],
+  // target: 'node',
+  // // externals: [nodeExternals()],
   module: {
     rules: [
       {
         test: /\.js$/,
         exclude: [
-          /node_modules/,
-          /libs/,
-          /lib/,
+          // /node_modules/,
           /vendors/,
           /bower_components/
         ],
@@ -48,30 +46,30 @@ module.exports = {
         }],
       },
       {
-        test: /\.pug$/,
-        loaders: ['file-loader?name=[path][name].html', 'pug-html-loader?pretty&exports=false']
-      },
-      {
         test: /\.scss$/,
-        use: extractSass.extract({
-          use: [{
-            loader: "css-loader"
-          }, {
-            loader: "sass-loader"
-          }],
-          // Use style-loader in development
-          fallback: "style-loader"
-        })
+        use: [{
+          loader: "style-loader" // creates style nodes from JS strings
+        }, {
+          loader: "css-loader" // translates CSS into CommonJS
+        }, {
+          loader: "sass-loader" // compiles Sass to CSS
+        }]
       }
     ],
   },
   plugins: [
-    extractSass,
+    // extractSass,
     new webpack.HotModuleReplacementPlugin(),
-    new webpack.optimize.CommonsChunkPlugin({
-      name: 'commons',
-      filename: 'commons.js',
-      minChunks: 2
-    })
+    new webpack.NamedModulesPlugin(),
+    // new webpack.NoEmitOnErrorsPlugin(),
+    new DashboardPlugin({ port: 3000 }),
+    new webpack.WatchIgnorePlugin([
+      path.join(__dirname, 'node_modules')
+    ])
+    // new webpack.optimize.CommonsChunkPlugin({
+    //   name: 'commons',
+    //   filename: 'commons.js',
+    //   minChunks: 2
+    // })
   ]
 };
